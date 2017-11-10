@@ -7,11 +7,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <img src={"http://wethesauce.com/wp-content/uploads/2016/07/Sauce-Logo.png-Transparent-e1468192478677.png"} className="App-logo" alt="logo" />
+          <h1 className="App-title">Sauce Radio</h1>
         </header>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          Artist Go here
         </p>
       </div>
     );
