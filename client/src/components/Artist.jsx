@@ -2,43 +2,38 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 class Artist extends Component {
-    constructor() {
-        super();
-        this.state = {
-            artist: {},
-            songs: [],
-        };
+    state = {
+        artist: {},
+        albums: []
     }
 
-    componentWillMount() {
-        const artistId = this.props.match.params.id;
-        this.fetchArtistAndSongData(artistId)
-    }
-
-    fetchArtistAndSongData = async (artistId) => {
-        try {
-            const artistResponse = await axios.get(`/api/artists/${artistId}`)
-            const songsResponse = await axios.get(`/api/artists/${artistId}/songs`)
-            await this.setState({
-                artist: artistResponse.data,
-                songs: songsResponse.data
-            });
-        }
-        catch (error) {
-            console.log(error)
-            await this.setState({error: error.message})
-        }
-    }
-
+  async componentWillMount(){
+       try {
+         const {artist_id} = this.props.match.params
+         const response = await axios.get(`/api/artists/${artist_id}`)
+         console.log(response)
+         this.setState({artist: response.data})
+       }catch(error) {
+           console.log(error)
+       }
+       try {
+        const {artist_id} = this.props.match.params
+        const response = await axios.get(`/api/artists/${artist_id}/albums`)
+        console.log(response)
+        this.setState({albums: response.data})
+      }catch(error) {
+          console.log(error)
+      }
+   } 
     render() {
         return (
             <div>
                 <img src={this.state.artist.photo_url} alt=""/>
                 <h1>{this.state.artist.name}</h1>
-                {this.state.songs.map(song => (
-                    <div key={song.id}>
-                        <h4>{song.title}</h4>
-                        <audio controls src={song.preview_url}></audio>
+
+                {this.state.albums.map(album => (
+                    <div key={this.state.album}>
+                        <img src={album.cover_art_url}/>
                     </div>
                 ))}
             </div>

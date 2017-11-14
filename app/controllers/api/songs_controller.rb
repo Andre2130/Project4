@@ -1,6 +1,7 @@
 class Api::SongsController < ApplicationController
     def index
-        @songs = Song.all
+        @album = Album.find params[:album_id]
+        @songs = @albums.songs
         render json: @songs
       end
     

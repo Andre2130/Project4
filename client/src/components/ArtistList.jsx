@@ -1,54 +1,20 @@
-// import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
-// import axios from 'axios';
 
-// class ArtistList extends Component {
-//     constructor(){
-//         super();
-//         this.state = {
-//             error: '',
-//             artists: []
-//         }
-//     }
-
-//     componentWillMount(){
-//         this.fetchArtists();
-//     }
-
-//     fetchArtists = async () => {
-//         try {
-//             const res = await axios.get('/api/artists');
-//             await this.setState({artists: res.data});
-//             return res.data;
-//         }
-//         catch (err) {
-//             console.log(err)
-//             await this.setState({error: err.message})
-//             return err.message
-//         }
-
-//     }
-
-//     render() {
-//         if (this.state.error){
-//             return <div>{this.state.error}</div>
-//         }
-//         return (
-//             <div>
-//                 <h1>All Artists</h1>
-//                 {this.state.artists.map(artist => (
-//                     <div key={artist.id}>
-//                         <Link to={`/artist/${artist.id}`} >{artist.name}</Link>
-//                     </div>
-//                 ))}
-//             </div>
-//         );
-//     }
-// }
-
-// export default ArtistList;
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components'
+
+const ArtistDisplay = styled.div`
+border:solid;
+width:50%;
+padding:50px;
+text-align:center;
+margin:auto;
+position: relative;
+background-color: grey;
+font-size:50px;
+height:200px;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+`
 
 const ArtistList = (props) => {
         return (
@@ -56,7 +22,9 @@ const ArtistList = (props) => {
                 <h2>All Artists</h2>
                 {
                     props.artists.map((artist) => {
-                        return <div><Link to={`/artists/${artist.id}`}>{artist.name}</Link></div>
+                        return <div>
+                            <Link to={`/artists/${artist.id}`}><ArtistDisplay>{artist.name} <img src={artist.photo_url} height="100" width="100"/></ArtistDisplay></Link>
+                            </div>
                     })
                 }
                </div>

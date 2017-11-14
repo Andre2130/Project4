@@ -19,7 +19,7 @@ class App extends Component {
           console.log(error)
       }
       try {
-        const response = await axios.get('/api/artists_id/songs')
+        const response = await axios.get('/api/artists_id/albums')
         this.setState({songs: response.data})
       } catch(error){
           console.log(error)
