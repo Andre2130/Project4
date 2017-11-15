@@ -5,6 +5,7 @@ import axios from 'axios'
 import NavBar from './components/NavBar'
 import ArtistList from './components/ArtistList'
 import Artist from './components/Artist'
+import Album from './components/Album'
 class App extends Component {
   state = {
     artists: [],
@@ -34,6 +35,7 @@ class App extends Component {
           <Switch>
               <Route exact path='/' render={ArtistListComponent} />
               <Route exact path='/artists/:artist_id' component={Artist}/>
+              <Route exact path='/artists/:artist_id/albums/:album_id' component={Album}/>
           </Switch>
           
       </div>

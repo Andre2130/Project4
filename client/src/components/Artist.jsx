@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 class Artist extends Component {
@@ -33,7 +34,7 @@ class Artist extends Component {
 
                 {this.state.albums.map(album => (
                     <div key={this.state.album}>
-                        <img src={album.cover_art_url}/>
+                    <Link to={`/artists/${this.state.artist.id}/albums/${album.id}`}><img src={album.cover_art_url}/></Link>
                     </div>
                 ))}
             </div>
