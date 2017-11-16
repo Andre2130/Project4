@@ -31,7 +31,7 @@ class Artist extends Component {
             <div>
                 <img src={this.state.artist.photo_url} alt=""/>
                 <h1>{this.state.artist.name}</h1>
-                <button>Add album</button>
+                <Link to={`/artists/${this.state.artist.id}/albums`}><button>Add album</button></Link>
 
                 {this.state.albums.map(album => (
                     <div key={this.state.album}>

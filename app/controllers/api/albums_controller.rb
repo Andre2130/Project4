@@ -6,7 +6,8 @@ class Api::AlbumsController < ApplicationController
       end
     
       def create
-        @album = Album.create!(album_params)
+        @artist = Artist.find params[:artist_id]
+        @album = @artist.albums.create!(album_params)
     
         render json: @album
       end
