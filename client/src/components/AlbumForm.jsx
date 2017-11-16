@@ -36,10 +36,10 @@ box-shadow: .5px .5px .5px .5px;
 `
 
 const Input = styled.input.attrs({
-    
-	margin: props => props.size || '1em',
-	padding: props => props.size || '2em'
-})`
+
+    margin: props => props.size || '1em',
+    padding: props => props.size || '2em'
+}) `
 	color: black;
     font-family: "Oxygen", sans-serif;
 	font-size: em;
@@ -50,10 +50,10 @@ const Input = styled.input.attrs({
 `
 
 const TextArea = styled.textarea.attrs({
-    
-	margin: props => props.size || '.5em',
-	padding: props => props.size || '.5em'
-})`
+
+    margin: props => props.size || '.5em',
+    padding: props => props.size || '.5em'
+}) `
 	color: black;
     font-family: "Oxygen", sans-serif;
 	font-size: 0.75em;
@@ -103,8 +103,8 @@ class AlbumForm extends Component {
             name: '',
             cover_art_url: ''
         }
-        const response = await axios.Album(`/api/artists/${artist_id}/Albums`, {
-            Album: this.state.newAlbum
+        const response = await axios.post(`/api/artists/${artist_id}/albums`, {
+            album: this.state.newAlbum
         })
         this.setState({ redirectToAlbumList: true, newAlbumId: response.data._id, newAlbum: emptyForm })
     }
@@ -115,38 +115,38 @@ class AlbumForm extends Component {
         if (this.state.redirectToAlbumList === true) {
             const { artist_id } = this.props.match.params
             return (
-            <Redirect to = {`/artists/${artist_id}`} />
+                <Redirect to={`/artists/${artist_id}`} />
             )
         }
-        
+
         return (
             <FormContainerParentContainer>
 
-            <FormContainer>
-                <form onSubmit={this.handleSubmit}>
-                <h2>New Album</h2>
-                    <div>
-                        <Input onChange={this.handleChange} 
-                        placeholder='name' 
-                        name='name' 
-                        type="text" 
-                        value={this.state.newAlbum.name} 
-                        size="2em"/>
-                    </div>
-                    <div>
-                     <TextArea onChange={this.handleChange} 
-                     placeholder='cover_art_url' 
-                     name='cover_art_url' 
-                     type="text" 
-                     value={this.state.newAlbum.cover_art_url} 
-                     size="4em"/> 
+                <FormContainer>
+                    <form onSubmit={this.handleSubmit}>
+                        <h2>New Album</h2>
+                        <div>
+                            <Input onChange={this.handleChange}
+                                placeholder='name'
+                                name='name'
+                                type="text"
+                                value={this.state.newAlbum.name}
+                                size="2em" />
+                        </div>
+                        <div>
+                            <TextArea onChange={this.handleChange}
+                                placeholder='cover_art_url'
+                                name='cover_art_url'
+                                type="text"
+                                value={this.state.newAlbum.cover_art_url}
+                                size="4em" />
 
-                    </div>
-                    <div>
-                        <Button>Submit New Album</Button>
-                    </div>
-                </form>
-            </FormContainer>
+                        </div>
+                        <div>
+                            <Button>Submit New Album</Button>
+                        </div>
+                    </form>
+                </FormContainer>
             </FormContainerParentContainer>
         )
     }
