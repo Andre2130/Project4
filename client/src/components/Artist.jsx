@@ -1,23 +1,33 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 class Artist extends Component {
     state = {
         artist: {},
-        albums: []
+        albums: [],
+        redirectToArtist: false
     }
 
   async componentWillMount(){
-       try {
-         const {artist_id} = this.props.match.params
-         const response = await axios.get(`/api/artists/${artist_id}`)
-         console.log(response)
-         this.setState({artist: response.data})
-       }catch(error) {
-           console.log(error)
-       }
-       try {
+       this.getArtist()
+       this.getAlbums()
+      
+   } 
+
+getArtist = async (album_id) => {
+    try {
+        const {artist_id} = this.props.match.params
+        const response = await axios.get(`/api/artists/${artist_id}`)
+        console.log(response)
+        this.setState({artist: response.data})
+      }catch(error) {
+          console.log(error)
+      }
+}
+
+getAlbums = async (album_id) => {
+    try {
         const {artist_id} = this.props.match.params
         const response = await axios.get(`/api/artists/${artist_id}/albums`)
         console.log(response)
@@ -25,27 +35,32 @@ class Artist extends Component {
       }catch(error) {
           console.log(error)
       }
-   } 
-
+}
    deleteAlbum = async (album_id) => {
     try {
         const { artist_id } = this.props.match.params
         const response = await axios.delete(`/api/artists/${artist_id}/albums/${album_id}`)
         this.setState({
             artist: response.data,
-            redirectToartist: true,
+            redirectToArtist: true,
         })
+        this.getAlbums()
     } catch (error) {
         console.log(error)
         await this.setState({ error: error.message })
     }
 }
     render() {
+        // if (this.state.redirectToArtist) {
+        //     return (
+        //         <Redirect to={`/artists/${this.state.artist.id}`} />
+        //     )
+        // }
         return (
             <div>
                 <img src={this.state.artist.photo_url} alt=""/>
                 <h1>{this.state.artist.name}</h1>
-                <Link to={`/artists/${this.state.artist.id}/albums`}><button>Add album</button></Link>
+                <Link to={`/artists/${this.state.artist.id}/albums`}><button>Add Album</button></Link>
 
                 {this.state.albums.map(album => (
                     <div key={this.state.album}>
