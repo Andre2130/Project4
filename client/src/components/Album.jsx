@@ -4,7 +4,7 @@ import axios from 'axios';
 class Album extends Component {
     state = {
         album: {},
-        songs: [{}]
+        songs: [{}],
     }
 
   async componentWillMount(){

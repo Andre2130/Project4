@@ -6,6 +6,7 @@ import NavBar from './components/NavBar'
 import ArtistList from './components/ArtistList'
 import Artist from './components/Artist'
 import Album from './components/Album'
+import EditAlbum from './components/EditAlbum'
 class App extends Component {
   state = {
     artists: [],
@@ -19,12 +20,12 @@ class App extends Component {
       } catch(error){
           console.log(error)
       }
-      try {
-        const response = await axios.get('/api/artists_id/albums')
-        this.setState({songs: response.data})
-      } catch(error){
-          console.log(error)
-      }
+      // try {
+      //   const response = await axios.get('/api/artists_id/albums')
+      //   this.setState({songs: response.data})
+      // } catch(error){
+      //     console.log(error)
+      // }
   }
   render() {
     const ArtistListComponent = () => (<ArtistList artists={this.state.artists}/>)
@@ -36,6 +37,7 @@ class App extends Component {
               <Route exact path='/' render={ArtistListComponent} />
               <Route exact path='/artists/:artist_id' component={Artist}/>
               <Route exact path='/artists/:artist_id/albums/:album_id' component={Album}/>
+              <Route exact path="/artists/:artist_id/albums/:album_id/edit" component={EditAlbum} />
           </Switch>
           
       </div>

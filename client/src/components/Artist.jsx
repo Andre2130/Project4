@@ -31,10 +31,14 @@ class Artist extends Component {
             <div>
                 <img src={this.state.artist.photo_url} alt=""/>
                 <h1>{this.state.artist.name}</h1>
+                <button>Add album</button>
 
                 {this.state.albums.map(album => (
                     <div key={this.state.album}>
+                        <h1>{album.name}</h1>
                     <Link to={`/artists/${this.state.artist.id}/albums/${album.id}`}><img src={album.cover_art_url}/></Link>
+                    <button>Delete album</button>
+                    <Link to={`/artists/${this.state.artist.id}/albums/${album.id}/edit`}><button>Edit album</button></Link>
                     </div>
                 ))}
             </div>

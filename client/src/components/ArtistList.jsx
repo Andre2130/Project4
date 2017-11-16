@@ -17,7 +17,10 @@ const ArtistList = (props) => {
                 {
                     props.artists.map((artist) => {
                         return <div>
-                            <Link to={`/artists/${artist.id}`}><ArtistDisplay>{artist.name} <img src={artist.photo_url} height="100" width="100"/></ArtistDisplay></Link>
+                            <Link to={`/artists/${artist.id}`}><ArtistDisplay>
+                            <img src={artist.photo_url} height="100" width="100"/>
+                                <h1>{artist.name}</h1>
+                                </ArtistDisplay></Link>
                             </div>
                     })
                 }
