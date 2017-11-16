@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Napster from './Napster'
 
 class Album extends Component {
     state = {
@@ -37,7 +38,7 @@ class Album extends Component {
                     return(<div><h1>{name}</h1><audio controls src={song_url}/></div>) 
                 })}
                             
-                        
+                     <Napster />   
             </div>
         );
     }

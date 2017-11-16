@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import styled from 'styled-components'
+
+const AlbumDisplay = styled.div`
+margin: 5px;
+border: 1px solid #ccc;
+float: left;
+width: 180px;
+`
 
 class Artist extends Component {
     state = {
@@ -63,9 +71,9 @@ getAlbums = async (album_id) => {
                 <Link to={`/artists/${this.state.artist.id}/albums`}><button>Add Album</button></Link>
 
                 {this.state.albums.map(album => (
-                    <div key={this.state.album}>
+                    <AlbumDisplay key={this.state.album}>
                         <h1>{album.name}</h1>
-                    <Link to={`/artists/${this.state.artist.id}/albums/${album.id}`}><img src={album.cover_art_url}/></Link>
+                    <Link to={`/artists/${this.state.artist.id}/albums/${album.id}`}><img src={album.cover_art_url} height="100" width="100"/></Link>
                     <button onClick={() => {
                                     const a = window.confirm('Are You Sure?')
                                     if (a == true) {
@@ -73,7 +81,7 @@ getAlbums = async (album_id) => {
                                     }
                                 }}>Delete Album</button>
                     <Link to={`/artists/${this.state.artist.id}/albums/${album.id}/edit`}><button>Edit album</button></Link>
-                    </div>
+                    </AlbumDisplay>
                 ))}
             </div>
         );
