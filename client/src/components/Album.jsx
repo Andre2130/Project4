@@ -31,8 +31,12 @@ class Album extends Component {
                 <h1>
                 {this.state.album.title}
                 </h1>
-                            {this.state.songs[0].name}
-                            <audio controls src={this.state.songs[0].song_url} />
+                {this.state.songs.map(song => {
+                    const song_url = song.song_url
+                    const name = song.name
+                    return(<div><h1>{name}</h1><audio controls src={song_url}/></div>) 
+                })}
+                            
                         
             </div>
         );
