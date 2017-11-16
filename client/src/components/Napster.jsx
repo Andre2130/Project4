@@ -10,14 +10,15 @@ class Napster extends Component {
     }
 
   async componentWillMount(){
-       const response = await axios.get(`http://api.napster.com/v2.2/playlist/top?apikey=${process.env.REACT_APP_SECRET}&limit=5`)
-       this.setState({albums: response.data})
+       const response = await axios.get(`http://api.napster.com/v2.2/artists/Art.28463069?apikey=${process.env.REACT_APP_SECRET}&limit=1`)
+       console.log(response.data)
+       this.setState({artist: response.data.artists[0]})
    } 
 
     render() {
         return (
             <div>
-                <h1>{this.state.albums.name}</h1>
+                <h1>{this.state.artist.name}</h1>
             </div>
         );
     }
