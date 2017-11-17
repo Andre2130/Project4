@@ -9,6 +9,9 @@ display: inline-block;
 width: 150px;
 height: 150px;
 border-radius: 50%;
+img{
+    margin: 20px;
+}
 `
 const ProfilePic = styled.div`
 display: inline-block;
@@ -16,7 +19,7 @@ width: 50px;
 height: 50px;
 border-radius: 50%;
 float: left;
-margin: 100px;
+margin: 50px;
 img{
     border-radius: 50%;
 };
@@ -78,15 +81,16 @@ getAlbums = async (album_id) => {
         // }
         return (
             <div>
-                <ProfilePic><img src={this.state.artist.photo_url} alt=""/></ProfilePic>
                 <p><Napster artist={this.state.artist.name}/></p>
+                <ProfilePic><img src={this.state.artist.photo_url} height="500" width="500"/></ProfilePic>
+                
                 
                 <Link to={`/artists/${this.state.artist.id}/albums`}><button>Add Album</button></Link>
 
                 {this.state.albums.map(album => (
                     <AlbumDisplay key={this.state.album}>
                         <h1>{album.name}</h1>
-                    <Link to={`/artists/${this.state.artist.id}/albums/${album.id}`}><img src={album.cover_art_url} height="100" width="100"/></Link>
+                    <Link to={`/artists/${this.state.artist.id}/albums/${album.id}`}><img src={album.cover_art_url} height="200" width="200"/></Link>
                     <button onClick={() => {
                                     const a = window.confirm('Are You Sure?')
                                     if (a == true) {

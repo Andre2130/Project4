@@ -4,7 +4,6 @@ import styled from 'styled-components'
 
 const Blurb = styled.div`
 background-color: grey;
-margin: 100px;
 `
 const Name = styled.div`
 text-align:center;

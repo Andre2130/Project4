@@ -14,10 +14,17 @@ img{
     border-radius: 50%;
 };
 `
+const Main = styled.div`
+width: max;
+text-align: center;
+float:left;
+margin: 10px;
+padding: 20px; 
+`
 
 const ArtistList = (props) => {
         return (
-            <div>
+            <Main>
                 <h2>All Artists</h2>
                 {
                     props.artists.map((artist) => {
@@ -29,7 +36,7 @@ const ArtistList = (props) => {
                             </ArtistDisplay>
                     })
                 }
-               </div>
+               </Main>
         )
 }
 
