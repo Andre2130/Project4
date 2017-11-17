@@ -89,7 +89,7 @@ getAlbums = async (album_id) => {
 
                 {this.state.albums.map(album => (
                     <AlbumDisplay key={this.state.album}>
-                        <h1>{album.name}</h1>
+                        <h3>{album.name}</h3>
                     <Link to={`/artists/${this.state.artist.id}/albums/${album.id}`}><img src={album.cover_art_url} height="200" width="200"/></Link>
                     <button onClick={() => {
                                     const a = window.confirm('Are You Sure?')
