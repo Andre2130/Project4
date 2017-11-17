@@ -7,8 +7,9 @@ const ArtistDisplay = styled.div`
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 max-width: 300px;
 text-align: center;
-justify-content: space-evenly;
-margin 10px;
+float:left;
+margin: 10px;
+padding: 20px; 
 `
 
 const ArtistList = (props) => {

@@ -5,10 +5,10 @@ import styled from 'styled-components'
 import Napster from './Napster'
 
 const AlbumDisplay = styled.div`
-margin: 5px;
-border: 1px solid #ccc;
-float: left;
-width: 180px;
+display: inline-block;
+width: 150px;
+height: 150px;
+border-radius: 50%;
 `
 
 class Artist extends Component {

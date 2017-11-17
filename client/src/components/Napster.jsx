@@ -17,6 +17,10 @@ class Napster extends Component {
     //    const response = await axios.get(`http://api.napster.com/v2.2/artists/${artistWithHyphens}?apikey=${process.env.REACT_APP_SECRET}&limit=1`)
     //    console.log(response.data)
     //    this.setState({artist: response.data.artists[0]})
+    // <h1>{this.state.artist.name}</h1>
+    // {this.state.artist.blurbs}
+    // {this.state.artist.bios[0].bio}<br/>
+    // {this.state.artist.albumGroups.main}
    }
 
    async componentWillReceiveProps(nextProps){
@@ -26,6 +30,11 @@ class Napster extends Component {
         console.log(response.data)
         this.setState({artist: response.data.artists[0]})
        }
+       if (nextProps.artist !== this.props.album){
+        const response = await axios.get(`http://api.napster.com/v2.2/albums/Alb.336037856?apikey=${process.env.REACT_APP_SECRET}&limit=1`)
+        console.log(response.data)
+        this.setState({album: response.data.albums[0]})
+       }
    }
 
     render() {
@@ -33,8 +42,6 @@ class Napster extends Component {
             <div>
                 <h1>{this.state.artist.name}</h1>
                 {this.state.artist.blurbs}
-                {this.state.artist.bios[0].bio}<br/>
-                {this.state.artist.albumGroups.main}
             </div>
         );
     }
