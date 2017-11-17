@@ -68,8 +68,8 @@ getAlbums = async (album_id) => {
         return (
             <div>
                 <img src={this.state.artist.photo_url} alt=""/>
-                <Napster />
-                <h1>{this.state.artist.name}</h1>
+                <Napster artist={this.state.artist.name}/>
+                
                 <Link to={`/artists/${this.state.artist.id}/albums`}><button>Add Album</button></Link>
 
                 {this.state.albums.map(album => (
