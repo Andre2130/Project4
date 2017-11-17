@@ -4,7 +4,10 @@ import axios from 'axios';
 class Napster extends Component {
 
     state = {
-        artist: {},
+        artist: {
+            bios:[{}],
+            albumGroups: {}
+        },
         albums: [],
         redirectToArtist: false
     }
@@ -30,6 +33,8 @@ class Napster extends Component {
             <div>
                 <h1>{this.state.artist.name}</h1>
                 {this.state.artist.blurbs}
+                {this.state.artist.bios[0].bio}<br/>
+                {this.state.artist.albumGroups.main}
             </div>
         );
     }
