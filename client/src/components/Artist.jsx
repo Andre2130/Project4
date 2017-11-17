@@ -10,6 +10,17 @@ width: 150px;
 height: 150px;
 border-radius: 50%;
 `
+const ProfilePic = styled.div`
+display: inline-block;
+width: 50px;
+height: 50px;
+border-radius: 50%;
+float: left;
+margin: 100px;
+img{
+    border-radius: 50%;
+};
+`
 
 class Artist extends Component {
     state = {
@@ -67,7 +78,7 @@ getAlbums = async (album_id) => {
         // }
         return (
             <div>
-                <img src={this.state.artist.photo_url} alt=""/>
+                <ProfilePic><img src={this.state.artist.photo_url} alt=""/></ProfilePic>
                 <p><Napster artist={this.state.artist.name}/></p>
                 
                 <Link to={`/artists/${this.state.artist.id}/albums`}><button>Add Album</button></Link>
