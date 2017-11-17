@@ -32,6 +32,7 @@ class Album extends Component {
                 <h1>
                 {this.state.album.title}
                 </h1>
+                <img src={this.state.album.cover_art_url}/>
                 {this.state.songs.map(song => {
                     const song_url = song.song_url
                     const name = song.name

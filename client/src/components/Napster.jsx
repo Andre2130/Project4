@@ -35,12 +35,12 @@ class Napster extends Component {
    async componentWillReceiveProps(nextProps){
        if (nextProps.artist !== this.props.artist){
         const artistWithHyphens = nextProps.artist.split(" ").join("-").toLowerCase()
-        const response = await axios.get(`http://api.napster.com/v2.2/artists/${artistWithHyphens}?apikey=${process.env.REACT_APP_SECRET}&limit=1`)
+        const response = await axios.get(`https://api.napster.com/v2.2/artists/${artistWithHyphens}?apikey=${process.env.REACT_APP_SECRET}&limit=1`)
         console.log(response.data)
         this.setState({artist: response.data.artists[0]})
        }
        if (nextProps.artist !== this.props.album){
-        const response = await axios.get(`http://api.napster.com/v2.2/albums/Alb.336037856?apikey=${process.env.REACT_APP_SECRET}&limit=1`)
+        const response = await axios.get(`https://api.napster.com/v2.2/albums/Alb.336037856?apikey=${process.env.REACT_APP_SECRET}&limit=1`)
         console.log(response.data)
         this.setState({album: response.data.albums[0]})
        }
