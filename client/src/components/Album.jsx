@@ -37,8 +37,6 @@ class Album extends Component {
                     const name = song.name
                     return(<div><h1>{name}</h1><audio controls src={song_url}/></div>) 
                 })}
-                            
-                     <Napster />   
             </div>
         );
     }

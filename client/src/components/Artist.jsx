@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components'
+import Napster from './Napster'
 
 const AlbumDisplay = styled.div`
 margin: 5px;
@@ -67,6 +68,7 @@ getAlbums = async (album_id) => {
         return (
             <div>
                 <img src={this.state.artist.photo_url} alt=""/>
+                <Napster />
                 <h1>{this.state.artist.name}</h1>
                 <Link to={`/artists/${this.state.artist.id}/albums`}><button>Add Album</button></Link>
 

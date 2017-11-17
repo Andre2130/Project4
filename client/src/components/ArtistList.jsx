@@ -6,8 +6,9 @@ import styled from 'styled-components'
 const ArtistDisplay = styled.div`
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 max-width: 300px;
-margin: auto;
 text-align: center;
+justify-content: space-evenly;
+margin 10px;
 `
 
 const ArtistList = (props) => {
@@ -16,12 +17,12 @@ const ArtistList = (props) => {
                 <h2>All Artists</h2>
                 {
                     props.artists.map((artist) => {
-                        return <div>
-                            <Link to={`/artists/${artist.id}`}><ArtistDisplay>
+                        return <ArtistDisplay>
+                            <Link to={`/artists/${artist.id}`}><div>
                             <img src={artist.photo_url} height="100" width="100"/>
                                 <h1>{artist.name}</h1>
-                                </ArtistDisplay></Link>
-                            </div>
+                                </div></Link>
+                            </ArtistDisplay>
                     })
                 }
                </div>
