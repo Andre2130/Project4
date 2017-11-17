@@ -10,6 +10,9 @@ text-align: center;
 float:left;
 margin: 10px;
 padding: 20px; 
+img{
+    border-radius: 50%;
+};
 `
 
 const ArtistList = (props) => {

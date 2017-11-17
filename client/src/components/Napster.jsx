@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import styled from 'styled-components'
+
+const Blurb = styled.div`
+background-color: grey;
+margin: 100px;
+`
+const Name = styled.div`
+text-align:center;
+`
 
 class Napster extends Component {
 
@@ -40,8 +49,8 @@ class Napster extends Component {
     render() {
         return (
             <div>
-                <h1>{this.state.artist.name}</h1>
-                {this.state.artist.blurbs}
+                <Name><h1>{this.state.artist.name}</h1></Name>
+                <Blurb>{this.state.artist.blurbs}</Blurb>
             </div>
         );
     }
